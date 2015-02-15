@@ -2,7 +2,6 @@
 
 angular.module('angular04')
   .controller('PersonalListCtrl', function ($scope, personalService) {
-    debugger;
     if (!personalService.ifPersonalExist()) {
       personalService.setPersonal();
     }
@@ -10,4 +9,5 @@ angular.module('angular04')
     $scope.removePerson = function(id) {
       personalService.removePerson(id);
     };
+
   });

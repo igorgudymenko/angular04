@@ -4,6 +4,7 @@ angular.module('angular04', ['ui.router'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('dashboard', {
+        abstract: false,
         url: '/dashboard',
         views: {
           'main': {
