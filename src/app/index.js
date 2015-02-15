@@ -3,7 +3,7 @@
 angular.module('angular04', ['ui.router'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('/dashboard', {
+      .state('dashboard', {
         url: '/dashboard',
         templateUrl: 'app/dashboard/dashboard.html',
         controller: 'DashboardCtrl',
@@ -11,6 +11,17 @@ angular.module('angular04', ['ui.router'])
           checkPermission: ['loginService', function(loginService) {
             return loginService.getUser() && loginService.getPassword();
           }]
+        }
+      })
+      .state('dashboard.personal', {
+        url: '',
+        views: {
+          'personal.list': {
+            templateUrl: 'app/dashboard/personal/personal.list.html'
+          },
+          'personal.add': {
+            templateUrl: 'app/dashboard/personal/personal.add.html'
+          }
         }
       })
       .state('login', {
@@ -22,8 +33,8 @@ angular.module('angular04', ['ui.router'])
             return loginService.getUser() && loginService.getPassword();
           }]
         }
-
-      });
+      })
+    ;
 
     $urlRouterProvider.otherwise('/');
   })
@@ -34,6 +45,7 @@ angular.module('angular04', ['ui.router'])
       var state;
 
       if (username === 'undefined' || password === 'undefined') {
+        console.log('asdas');
         state = 'login';
       } else {
         return;
@@ -41,6 +53,7 @@ angular.module('angular04', ['ui.router'])
       event.preventDefault();
       $state.go(state, {}, {notify: false})
         .then(function() {
+          console.log(toState);
           $rootScope.$broadcast('$stateChangeSuccess', toState, toParams, fromState, fromParams);
         });
     });

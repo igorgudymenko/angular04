@@ -1,2 +1,7 @@
 <div ng-include="'components/header/header.html'"></div>
-<div ng-view="personal"></div>
+<div class="row">
+    <div class="container">
+        <div ui-view="dashboard.personal.list"></div>
+        <div ui-view="dashboard.personal.add"></div>
+    </div>
+</div>
