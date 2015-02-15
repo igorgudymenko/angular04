@@ -13,7 +13,7 @@ angular.module('angular04', ['ui.router'])
           }]
         }
       })
-      .state('dashboard.personal', {
+      .state('personal', {
         url: '',
         views: {
           'personal.list': {
