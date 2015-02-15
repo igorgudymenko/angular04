@@ -30,10 +30,10 @@
         "module": null
       },
       "bootstrapComponents": {
-        "name": "angular-bootstrap",
-        "version": "0.12.x",
-        "key": "ui-bootstrap",
-        "module": "ui.bootstrap"
+        "name": null,
+        "version": null,
+        "key": "none",
+        "module": null
       },
       "cssPreprocessor": {
         "key": "none",
@@ -42,11 +42,11 @@
         "version": null
       },
       "jsPreprocessor": {
-        "key": "6to5",
+        "key": "none",
         "extension": "js",
-        "srcExtension": "es6",
-        "module": "gulp-6to5",
-        "version": "~1.0.2"
+        "srcExtension": "js",
+        "module": null,
+        "version": null
       },
       "htmlPreprocessor": {
         "key": "none",

@@ -1,8 +1,7 @@
 'use strict';
-/*jshint esnext: true */
 
-class MainCtrl {
-  constructor ($scope) {
+angular.module('angular04')
+  .controller('MainCtrl', function ($scope) {
     $scope.awesomeThings = [
       {
         'title': 'AngularJS',
@@ -45,26 +44,9 @@ class MainCtrl {
         'url': 'http://getbootstrap.com/',
         'description': 'Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.',
         'logo': 'bootstrap.png'
-      },
-      {
-        'title': 'Angular UI Bootstrap',
-        'url': 'http://angular-ui.github.io/bootstrap/',
-        'description': 'Bootstrap components written in pure AngularJS by the AngularUI Team.',
-        'logo': 'ui-bootstrap.png'
-      },
-      {
-        'title': 'ES6 (6to5)',
-        'url': 'https://github.com/6to5/6to5',
-        'description': 'Turns ES6+ code into vanilla ES5, so you can use next generation features today.',
-        'logo': '6to5.png'
       }
     ];
-    $scope.awesomeThings.forEach(function(awesomeThing) {
+    angular.forEach($scope.awesomeThings, function(awesomeThing) {
       awesomeThing.rank = Math.random();
     });
-  }
-}
-
-MainCtrl.$inject = ['$scope'];
-
-export default MainCtrl;
+  });

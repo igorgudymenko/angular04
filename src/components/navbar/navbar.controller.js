@@ -1,12 +1,6 @@
 'use strict';
-/*jshint esnext: true */
 
-class NavbarCtrl {
-  constructor ($scope) {
+angular.module('angular04')
+  .controller('NavbarCtrl', function ($scope) {
     $scope.date = new Date();
-  }
-}
-
-NavbarCtrl.$inject = ['$scope'];
-
-export default NavbarCtrl;
+  });
