@@ -13,17 +13,7 @@ angular.module('angular04', ['ui.router'])
           }]
         }
       })
-      .state('personal', {
-        url: '',
-        views: {
-          'personal.list': {
-            templateUrl: 'app/dashboard/personal/personal.list.html'
-          },
-          'personal.add': {
-            templateUrl: 'app/dashboard/personal/personal.add.html'
-          }
-        }
-      })
+
       .state('login', {
         url: '/login',
         templateUrl: 'app/login/login.html',
