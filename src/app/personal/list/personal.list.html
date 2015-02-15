@@ -1,0 +1,17 @@
+<div class="col-lg-6">
+    <div class="col-lg-12">
+        <div class="form-group" ng-repeat="person in personList.personal">
+            <div class="col-lg-8">
+                <span><b>{{person.firstName}} {{person.lastName}}</b><br>{{person.position}}</span>
+            </div>
+            <div class="col-lg-4">
+                <span ng-click="removePerson(person.id)" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="form-group">
+            <button class="btn btn-primary" ng-click="addPerson()">Create Person</button>
+        </div>
+    </div>
+</div>

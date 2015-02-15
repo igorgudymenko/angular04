@@ -53,9 +53,13 @@ angular.module('angular04').factory('personalService', function() {
 
   function addNewPerson(obj) {
     var data = JSON.parse(localStorage.getItem('personList'));
+    var arr = [data.personal];
+    console.log(arr);
+    arr.push(obj);
+    console.log(arr);
     var newData = {
       personal: [
-        data.personal.push(obj)
+
       ]
     };
 

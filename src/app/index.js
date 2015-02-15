@@ -5,37 +5,59 @@ angular.module('angular04', ['ui.router'])
     $stateProvider
       .state('dashboard', {
         url: '/dashboard',
-        templateUrl: 'app/dashboard/dashboard.html',
-        controller: 'DashboardCtrl',
-        resolve: {
-          checkPermission: ['loginService', function(loginService) {
-            return loginService.getUser() && loginService.getPassword();
-          }]
+        views: {
+          'main': {
+            templateUrl: 'app/dashboard/dashboard.html',
+            controller: 'DashboardCtrl',
+            resolve: {
+              checkPermission: ['loginService', function(loginService) {
+                return loginService.getUser() && loginService.getPassword();
+              }]
+            }
+          }
         }
       })
-
       .state('login', {
         url: '/login',
-        templateUrl: 'app/login/login.html',
-        controller: 'LoginCtrl',
-        resolve: {
-          checkPermission: ['loginService', function(loginService) {
-            return loginService.getUser() && loginService.getPassword();
-          }]
+        views: {
+          'main': {
+            templateUrl: 'app/login/login.html',
+            controller: 'LoginCtrl',
+            resolve: {
+              checkPermission: ['loginService', function(loginService) {
+                return loginService.getUser() && loginService.getPassword();
+              }]
+            }
+          }
+        }
+      })
+      .state('dashboard.personal', {
+        url: '',
+        views: {
+          'personalList@dashboard': {
+            templateUrl: 'app/personal/list/personal.list.html',
+            controller: 'PersonalListCtrl'
+          },
+          'personalAdd@dashboard': {
+            templateUrl: 'app/personal/add/personal.add.html',
+            controller: 'PersonalAddCtrl'
+          }
         }
       })
     ;
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/login');
   })
-  .run(['$rootScope', '$state', 'loginService', function($rootScope, $state, loginService) {
+  .run(['$rootScope', '$state', '$stateParams', 'loginService', function($rootScope, $state, $stateParams, loginService) {
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
+    $state.transitionTo('dashboard.personal');
+
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
       var username = loginService.getUser();
       var password = loginService.getPassword();
       var state;
-
-      if (username === 'undefined' || password === 'undefined') {
-        console.log('asdas');
+      if (!username || !password) {
         state = 'login';
       } else {
         return;
