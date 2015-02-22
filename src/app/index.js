@@ -58,7 +58,7 @@ angular.module('angular04', ['ui.router'])
       var username = loginService.getUser();
       var password = loginService.getPassword();
       var state;
-      if (!username || !password) {
+      if (!username || !password && password !== username) {
         state = 'login';
       } else {
         return;
